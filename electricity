@@ -1,0 +1,61 @@
+#include<iostream> 
+using namespace std; 
+class consumer 
+{ 
+char name[30]; 
+int units; 
+float charge; 
+public: 
+void read(); 
+float cal(); 
+void display(float); 
+};
+void consumer::read() 
+{ 
+cout<<"Enter consumer name:\n"; 
+cin>>name; 
+cout<<"Enter no. of units consumed:\n"; 
+cin>>units; 
+}
+float consumer::cal() 
+{ 
+if(units>200) 
+{ 
+charge=380+((units-200)*2.5); 
+return charge; 
+}
+else if(units>100) 
+{ 
+charge=200+((units-100)*1.8); 
+return charge; 
+}
+else 
+{ 
+charge=50+units*1.5; 
+return charge; 
+} 
+}
+void consumer::display(float amount) 
+{ 
+cout<<"\nConsumer name:"<<name<<"\n"; 
+cout<<"Units consumed:"<<units<<"units"<<"\n"; 
+cout<<"Amount charged:Rs."<<amount<<"\n"; 
+}
+int main() 
+{ 
+int n,i; 
+float amount; 
+consumer con[20]; 
+cout<<"Enter no. of consumers:\n"; 
+cin>>n; 
+for(i=0;i<n;i++) 
+{ 
+con[i].read(); 
+amount=con[i].cal();if(amount>300) 
+{ 
+amount=amount+(0.15*amount); 
+}
+con[i].display(amount); 
+}
+return 0; 
+}
